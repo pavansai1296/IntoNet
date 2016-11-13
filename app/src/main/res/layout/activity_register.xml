@@ -28,7 +28,6 @@
         android:layout_marginTop="116dp"
         android:id="@+id/text_name"
         android:textAppearance="@android:style/TextAppearance.Holo"
-        android:hint="My Text"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/text_phn" />
 
@@ -42,7 +41,6 @@
         android:textAppearance="@android:style/TextAppearance.Holo"
         style="@android:style/Widget.Holo.EditText"
         android:visibility="visible"
-        android:hint="My Text"
         android:layout_below="@+id/text_name"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="99dp" />
