@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">IntoNet</string>
     <string name="action_settings">Settings</string>
-
+    <string name="welcome_msg">Welcome to home</string>
+    <string name="title_activity_home">Home</string>
+    <string name="about_us"><p align="center"><u>The IntoNet Project</u></p> \n \n<h1><i> Developers:</i></h1> \n Sharanya, \n Deekshitha, \n Mahender, \n Pavan Sai Yadav \n Under the guidance of \n <i>S.Naga Raju</i></string>
 
 </resources>

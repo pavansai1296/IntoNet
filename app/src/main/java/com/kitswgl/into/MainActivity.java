@@ -1,17 +1,13 @@
 package com.kitswgl.into;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.EditText;
+
+import static com.kitswgl.into.Register.DATABASE_NAME;
+import static com.kitswgl.into.Register.TABLE_USER;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -19,33 +15,28 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+        setContentView(R.layout.activity_register);
+        if (!isUserRegistered())
 
-        Intent register=new Intent(MainActivity.this, Register.class);
-        startActivity(register);
+        {
+            Intent register = new Intent(MainActivity.this, Register.class);
+            startActivity(register);
+        } else {
+            Intent home = new Intent(MainActivity.this, Home.class);
+            startActivity(home);
+        }
     }
 
-/*    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }*/
-
-    /*@Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    boolean isUserRegistered() {
+        SQLiteDatabase mydatabase = openOrCreateDatabase(DATABASE_NAME, MODE_PRIVATE, null);
+        try {
+            Cursor cursor = mydatabase.query(TABLE_USER, new String[]{"*"},
+                    null,
+                    null, null, null, null, null);
+            return cursor != null;
+        } catch (Exception e) {
+            return false;
         }
+    }
 
-        return super.onOptionsItemSelected(item);
-    }*/
 }
